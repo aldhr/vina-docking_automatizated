@@ -1,0 +1,54 @@
+###README#########################333333############################################
+#based on previous work of:                                                                  #
+#https://github.com/leonqli/useful-scripts-for-autodock-vina/blob/master/dock.sh   #
+#https://link.springer.com/protocol/10.1007/978-1-4939-6783-4_5                    #
+####################################################################################
+
+
+
+MOST of scripts for processing files depends on MGLtools scripts, in
+order to make it work, they should point at correct path to MGLtools, 
+as well as python modules for mgltools.
+
+#1 setup MGLtools' python interpreter
+MGLTools installation
+download mgltools: http://mgltools.scripps.edu/downloads
+tar -xvzf mgltools_x86_64Linux2_1.5.6.tar.gz
+cd mgltools_x86_64Linux2_1.5.6/
+./install.sh
+
+After instalation of MGLtools
+Export paths to python as:
+#!/bin/bash
+
+pwd1=/home/ahr/Desktop/HTVS-pipeline/utils
+export PATH=$PATH:$pwd1/mgltools_x86_64Linux2_1.5.6/bin
+export MGL=$pwd1/mgltools_x86_64Linux2_1.5.6
+export MGLPY=$MGL/bin/python
+export MGLUTIL=$MGL/MGLToolsPckgs/AutoDockTools/Utilities24/
+source ~/.bashrc
+
+then you can run $MGLPY as python interpreter.
+
+#2 setup MGLtools' scripts to correct python interpreter
+Then, you must go to utils/ADT_scripts, and for each python script,
+must replace first line for the correct path to MGLtools, if you don't
+know where it is you can ask terminal by which which $MGLPY and replace
+first line of each script by the output of which command (!# must be first tho).
+
+example: which $MGLPY
+»!#/home/ahr/Desktop/HTVS-pipeline/utils/mgltools_x86_64Linux2_1.5.6/bin/python
+
+
+#3 setup sh files that uses ADT_scripts
+Then, go to:
+pdb2pdbqt and change the path to prepare_receptor4.py
+prepare_receptor=/path/to/working_folder/docking/utils/ADT_scripts/prepare_receptor4.py
+AND
+mol2pdbqt and change the path to prepare_ligand4.py
+prepare_receptor=/path/to/working_folder/docking/utils/ADT_scripts/prepare_ligand4.py
+
+#4 setup and run pipeline
+##chmod +x *sh ##if not already done [just the first time is needed to allow execution]
+
+#5 hopefully nothing else is needed.
