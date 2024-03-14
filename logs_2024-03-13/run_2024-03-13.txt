@@ -1,0 +1,9 @@
+
+ - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - 
+
+100 clycles of molecular docking (in total: 101 cycles.)
+The docking of: 
+target/RBD/RBD.pdbqt and 5 ligands have concluded
+it took 23 minutes
+
+ - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - 
